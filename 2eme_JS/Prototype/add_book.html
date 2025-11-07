@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styling.css">
+    <link rel="stylesheet" href="catalogue.html">
+    <title>Document</title>
+</head>
+<body>
+    <a href="catalogue.html"><button id="GO_Back">GO Back</button></a>
+    <div id="boss">
+        <label for="title"> title</label>
+        <input type="text" id="title" >
+
+        <label for="author"> author</label>
+        <input type="text" id="author" >
+
+        <label for="year"> year</label>
+        <input type="text" id="year" >
+
+        <label for="price"> price</label>
+        <input type="text" id="price" >
+
+        <label for="code"> code</label>
+        <input type="text" id="code" >
+        
+        <input type="radio" id="TT" name="q1" value="there is"> there is
+        <input type="radio" id="TT0" name="q1" value="there is NOT"> there is NOT
+
+        <input type="file" id="photo" accept="image/*">
+
+        <button id="add_1" onclick="add_fun()">ADD</button>
+        <button id="cancel_1" onclick="cancel_fun()">CANCEL</button>
+    </div>
+    <div id="all"></div>
+    <script>
+        function add_fun()
+        {
+            let title_11 = document.getElementById("title").value ;
+            let author_11 = document.getElementById("author").value ;
+            let year_11 = document.getElementById("year").value ;
+            let price_11 = document.getElementById("price").value ;
+            let code_11 = document.getElementById("code").value ;
+            let choice = document.querySelector('input[name="q1"]:checked') ;
+            let answer = choice ? choice.value : "nothing_404" ;
+            let photo_11 = document.getElementById("photo").files[0] ;
+
+            if( title_11 && author_11 && year_11 && price_11 && code_11 && answer && photo_11 )
+            {
+               let scan_1 = new FileReader() ;
+               scan_1.onload = function(e)
+               {
+                 let adder = JSON.parse(localStorage.getItem("gohst")) || [] ;
+                 let new_beblio =
+                 {
+                    title : title_11 ,
+                    author : author_11 ,
+                    year : year_11 ,
+                    price : price_11 ,
+                    code : code_11 ,
+                    possibility : answer ,
+                    photo : e.target.result 
+                 }
+                 adder.push(new_beblio);
+                 localStorage.setItem("gohst",JSON.stringify(adder));
+                 let all_1 = document.getElementById("all");
+                 all_1.innerHTML = `
+                 ${new_beblio.title}<br>
+                 ${new_beblio.author}<br>
+                 ${new_beblio.year}<br>
+                 ${new_beblio.price}<br>
+                 ${new_beblio.possibility}<br>
+                 <img src="${new_beblio.photo}" alt="sorry" width = "100" ><br>
+                 `;
+               }
+               scan_1.readAsDataURL(photo_11);
+            }
+            else
+            {
+               alert("404");
+            }
+        }
+        function cancel_fun()
+        {
+             title_11 = document.getElementById("title").value = "" ;
+             author_11 = document.getElementById("author").value = ""  ;
+             year_11 = document.getElementById("year").value = "" ;
+             price_11 = document.getElementById("price").value = "" ;
+             code_11 = document.getElementById("code").value = ""  ;
+             choice = document.querySelector('input[name="q1"]:checked') ;
+             if(choice) choice.checked = false ; 
+             photo_11 = document.getElementById("photo").value = ""  ; ;
+        }
+    </script>
+</body>
+</html>
