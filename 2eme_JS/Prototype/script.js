@@ -37,7 +37,7 @@ function beblio_fun(list = beblio)
     photo_1.classList.add("photo_1");
     photo_1.src = element.photo;
     photo_1.width = 200 ;
-    photo_1.alt = "error" ;
+    photo_1.alt = element.title ;
 
     let button_delete = document.createElement("button");
     button_delete.classList.add("button_delete");
@@ -89,7 +89,7 @@ function tamane()
 
     let count = 0 ;
     beblio.forEach(item => {
-     if(item.possibility === "there is")
+     if(item.possibility === "existed")
      {
        count++;
      }
