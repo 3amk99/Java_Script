@@ -116,6 +116,31 @@ document.getElementById("az").addEventListener("click", function()
 
 
 
+let button_GO = document.getElementById("button_GO");
+button_GO.classList.add("button_GO");
+button_GO.innerHTML = `Expensive`;
+button_GO.addEventListener("click",function()
+{
+   let max_price_8 = beblio.reduce((item1,item2) => Number(item1.price) > Number(item2.price) ? item1 : item2 );
+   let index_beblio_1 = beblio.filter(item => Number(item.price) === Number(max_price_8.price)  );
+   beblio_fun(index_beblio_1);
+});
+  
+ 
+   
+
+let bottton = document.getElementById("bar");
+search_bar.addEventListener("input",function()
+{
+  let search_bar_txt =  search_bar.value.toLowerCase();
+  let index_beblio = beblio.filter(item => item.title.toLowerCase().includes(search_bar_txt) || String(item.code).toLowerCase().includes(search_bar_txt) );
+  beblio_fun(index_beblio);
+});
+
+
+
+
+
 function tamane()
 {
     let taman_1 = document.getElementById("taman");
@@ -139,6 +164,7 @@ function tamane()
     let max_price_1 = document.createElement("p");
     max_price_1.classList.add("max_price_1");
     max_price_1.innerHTML = `the max price : ${max_price.price}`;
+
 
     let total_price_1 = document.createElement("p");
     total_price_1.classList.add("total_price_1");
