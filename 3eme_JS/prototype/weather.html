@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="weather.css">
+</head>
+<body>
+    <div class="container">
+        <input type="text" id="search">
+        <button id="button_search">search</button>
+
+        <div class="position">
+            <img src="" id="photo">
+            <div class="taker">
+                <p id="temperature"></p>
+                <p id="wind"></p>
+                <p id="humidity"></p>
+                <p id="description"></p>
+                <p id="place"></p>
+                <img src="" id="image_icon">
+                <p id="time"></p>
+                <p id="A0"></p>
+                <p id="A1"></p>
+                <p id="A2"></p>
+                <p id="A3"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let search = document.getElementById("search");
+        let button_search = document.getElementById("button_search");
+        let photo = document.getElementById("photo");
+        let temperature = document.getElementById("temperature");
+        let wind = document.getElementById("wind");
+        let humidity = document.getElementById("humidity");
+        let description = document.getElementById("description");
+        let place = document.getElementById("place");
+        let image_icon = document.getElementById("image_icon");
+        let time = document.getElementById("time");
+        let A0 = document.getElementById("A0");
+        let A1 = document.getElementById("A1");
+        let A2 = document.getElementById("A2");
+        let A3 = document.getElementById("A3");
+
+        button_search.addEventListener("click", function() {
+            let city = search.value.trim();
+
+            fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=df2f45836d87daaca0cbebee1eef0865`)
+            .then(Response => Response.json())
+            .then(data => {
+                temperature.innerHTML = `${(data.main.temp - 273.15).toFixed(2)}°C`;
+                A0.style.display = "block";
+                A1.style.display = "block";
+                A2.style.display = "block";
+                A3.style.display = "block";
+                wind.innerHTML = `${data.wind.speed}m/s`;
+                humidity.innerHTML = `${data.wind.speed}%`;
+                description.innerHTML = `${data.weather[0].description}`;
+                place.innerHTML = `${data.sys.country},${data.name}`;
+                image_icon.src = ` https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+
+                let time_ms = new Date().getTime() + new Date().getTimezoneOffset() * 60000;
+                let global_ms = new Date(time_ms + data.timezone * 1000);
+                let result = global_ms.toLocaleDateString("fr-FR", {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    second: "2-digit"
+                });
+
+                time.innerHTML = `${result}`;
+            });
+
+            fetch(`https://api.unsplash.com/search/photos?page=1&query=${city}&client_id=3gp8oxKHljnPeQiWUBoIo-srE9a12alQOpIVBJ62Z9Y`)
+            .then(Response_p => Response_p.json())
+            .then(data_p => {
+                photo.style.display = "block";
+                photo.src = `${data_p.results[0].urls.regular}`;
+            })
+            .catch(error => {
+                alert("error");
+            });
+        });
+    </script>
+</body>
+</html>
