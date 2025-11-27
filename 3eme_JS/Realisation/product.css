@@ -1,0 +1,366 @@
+body
+{
+    box-sizing: border-box;
+    margin: 40px ;
+    font-family: sans-serif;
+    background-color: rgb(140, 119, 255);
+}
+#productList
+{
+    display: grid ;
+    width: 80%;
+    grid-template-columns: repeat(3 , 1fr);
+    gap: 10px ;
+    margin: 0 auto ;
+}
+.carte
+{
+    display: grid ;
+    width: 300px ;
+    grid-template-rows: auto auto auto 40px 50px; 
+    background-color: rgb(255, 255, 255) ;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px ;
+    border-radius: 20px ;
+}
+.carte .Image
+{
+   width : 150px ;
+   margin-left: auto;
+   margin-right: auto;
+   margin-top: auto;
+   margin-bottom: auto;
+}
+.carte .Image img 
+{
+   width : 150px ;
+}
+.carte .title
+{
+    font-size: 22px ;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 ;
+    padding-top: 12px ;
+    width: auto;
+    height: auto;
+}
+.carte .Description
+{
+    font-size: 10px ;
+    font-weight: bold;
+}
+.carte .price
+{
+    font-size: 17px ;
+    font-weight: bold;
+    color: rgb(31, 184, 0);
+    margin: 0 ;
+    padding-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.carte .rate
+{
+    font-size: 17px ;
+    font-weight: bold;
+    color: rgb(209, 214, 44);
+    margin: 0 ;
+    padding-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.five_rating
+{
+    font-size: 16px ;
+    color: black;
+}
+#star
+{
+    color: rgb(222, 225, 0);
+    margin-bottom: 12px;
+}
+#search
+{
+  width: 300px ;
+  height: 40px ;
+  font-size: 17px ;
+  border: none ;
+  outline: none;
+  
+}
+#categoryFilter
+{
+  width: 160px ;
+  height: 43px ;
+  font-size: 17px ;
+}
+#boss
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px ;
+}
+#categoryFilter 
+{
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  background-color: white;
+  cursor: pointer;
+}
+#categoryFilter option 
+{
+  background-color: rgb(143, 143, 143);
+  color: rgb(255, 255, 255);
+  padding: 10px;
+  font-size: 16px;
+}
+@media (max-width: 1080px) {
+
+  body
+{
+    box-sizing: border-box;
+    margin: 20px auto ;
+    font-family: sans-serif;
+    background-color: rgb(140, 119, 255);
+}
+#productList
+{
+    display: grid ;
+    width: 60%;
+    grid-template-columns: repeat(3 , 1fr);
+    gap: 10px ;
+    margin: 0 auto  ;
+}
+.carte
+{
+    display: grid ;
+    width: 150px ;
+    grid-template-rows: auto auto auto 20px 25px; 
+    background-color: rgb(255, 255, 255) ;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px ;
+    border-radius: 10px ;
+}
+.carte .Image  
+{
+  text-align: center;
+}
+.carte .Image img 
+{
+   width: 70px ;
+}
+.carte .title
+{
+    font-size: 11px ;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 ;
+    padding-top: 7px ;
+    width: auto;
+    height: auto;
+}
+.carte .Description
+{
+    font-size: 5px ;
+    font-weight: bold;
+}
+.carte .price
+{
+    font-size: 8px ;
+    font-weight: bold;
+    color: rgb(31, 184, 0);
+    margin: 0 ;
+    padding-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.carte .rate
+{
+    font-size: 8px ;
+    font-weight: bold;
+    color: rgb(209, 214, 44);
+    margin: 0 ;
+    padding-top: 2px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#star
+{
+    color: rgb(222, 225, 0);
+    margin-bottom: 6px;
+}
+.five_rating
+{
+    font-size: 8px ;
+    color: black;
+}
+#search
+{
+  width: 150px ;
+  height: 20px ;
+  font-size: 5px ;
+  border: none ;
+  outline: none;
+}
+#categoryFilter
+{
+  width: 80px ;
+  height: 23px ;
+  font-size: 8px ;
+}
+#boss
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px ;
+}
+#categoryFilter 
+{
+  padding: 4px 6px;
+  font-size: 8px;
+  border: 1px solid #ccc;
+  background-color: white;
+  cursor: pointer;
+}
+#categoryFilter option 
+{
+  background-color: rgb(143, 143, 143);
+  color: rgb(255, 255, 255);
+  padding: 5px;
+  font-size: 8px;
+}
+}
+@media (max-width: 612px) 
+{
+    body
+{
+    box-sizing: border-box;
+    margin: 10px 20px ;
+    font-family: sans-serif;
+    background-color: rgb(140, 119, 255);
+}
+#productList
+{
+    display: grid ;
+    width: 40%;
+    grid-template-columns: repeat(2 , 1fr);
+    gap: 10px ;
+    margin: 0 20px  ;
+}
+.carte
+{
+    display: grid ;
+    width: 150px ;
+    grid-template-rows: auto auto auto 20px 25px; 
+    background-color: rgb(255, 255, 255) ;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px ;
+    border-radius: 10px ;
+}
+.carte .Image  
+{
+  text-align: center;
+}
+.carte .Image img 
+{
+   width: 70px ;
+}
+.carte .title
+{
+    font-size: 11px ;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 ;
+    padding-top: 7px ;
+    width: auto;
+    height: auto;
+}
+.carte .Description
+{
+    font-size: 5px ;
+    font-weight: bold;
+}
+.carte .price
+{
+    font-size: 8px ;
+    font-weight: bold;
+    color: rgb(31, 184, 0);
+    margin: 0 ;
+    padding-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.carte .rate
+{
+    font-size: 8px ;
+    font-weight: bold;
+    color: rgb(209, 214, 44);
+    margin: 0 ;
+    padding-top: 2px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.five_rating
+{
+    font-size: 8px ;
+    color: black;
+}
+#star
+{
+    color: rgb(222, 225, 0);
+    margin-bottom: 6px;
+}
+#span
+{
+    font-size: 6px ;
+}
+#search
+{
+  width: 150px ;
+  height: 20px ;
+  font-size: 5px ;
+  border: none ;
+  outline: none;
+}
+#categoryFilter
+{
+  width: 80px ;
+  height: 23px ;
+  font-size: 8px ;
+}
+#boss
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px ;
+}
+#categoryFilter 
+{
+  padding: 4px 6px;
+  font-size: 8px;
+  border: 1px solid #ccc;
+  background-color: white;
+  cursor: pointer;
+}
+#categoryFilter option 
+{
+  background-color: rgb(143, 143, 143);
+  color: rgb(255, 255, 255);
+  padding: 5px;
+  font-size: 8px;
+}
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product List with API</title>
+  <link rel="stylesheet" href="product.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <h1><i class="fa-solid fa-cart-shopping"></i>Products.com</h1>
+
+ <div id="boss">
+  <input type="text" id="search" placeholder="Search...">
+      <select id="categoryFilter">
+        <option value="">Categories</option>
+      </select>
+  </div>
+ 
+  <div id="productList"></div>
+
+  <script>
+    let products = [];
+
+    
+    fetch('https://fakestoreapi.com/products')
+      .then(response => response.json())
+      .then(data => {
+        products = data ; 
+        displayProducts(products);
+        loadCategories(products);
+      })
+      .catch(error => 
+      {
+       console.error('Error loading products:', err)
+      }
+      );
+
+
+      function displayProducts(list) 
+      {
+      const container = document.getElementById('productList');
+      container.innerHTML = '';
+
+          list.forEach(product => 
+          {
+            const carte = document.createElement('div');
+            carte.classList.add("carte");
+           
+
+            let Image = document.createElement('div');
+            Image.classList.add("Image");
+            Image.innerHTML = `<img src="${product.image}" >` ;
+
+            let title_1 = document.createElement('p');
+            title_1.classList.add("title");
+            title_1.innerHTML = ` ${product.title}`;
+
+            let description_1 = document.createElement('p');
+            description_1.classList.add("Description");
+            description_1.innerHTML = ` ${product.description}`;
+
+
+            let price_1 = document.createElement('p');
+            price_1.classList.add("price");
+            price_1.innerHTML = ` ${product.price}$`;            
+
+            let rate_1 = document.createElement('p');
+            rate_1.classList.add("rate");
+            rate_1.innerHTML = `${product.rating.rate}<span class="five_rating">/5</span><i class="fa-solid fa-star" id="star"></i>`;
+
+            carte.appendChild(Image);
+            carte.appendChild(title_1);
+            carte.appendChild(description_1);
+            carte.appendChild(price_1);
+            carte.appendChild(rate_1);
+            container.appendChild(carte);
+          });
+
+      if (list.length === 0) 
+      {
+        container.innerHTML = '<p><i class="fa-solid fa-triangle-exclamation" style="color:red;"></i>ther no product found.</p>';
+      }
+    }
+
+    
+    function loadCategories(products) 
+    {
+      const select = document.getElementById('categoryFilter');
+      const categories = [...new Set(products.map(p => p.category))];
+
+      categories.forEach(cat => 
+      {
+        const option = document.createElement('option');
+        option.value = cat;
+        option.textContent = cat;
+        select.appendChild(option);
+      });
+    }
+
+    
+    const searchInput = document.getElementById('search');
+    const categorySelect = document.getElementById('categoryFilter');
+
+    searchInput.addEventListener('input', filterProducts);
+    categorySelect.addEventListener('change', filterProducts);
+
+    function filterProducts() 
+    {
+      const searchTerm = searchInput.value.toLowerCase();
+      const selectedCategory = categorySelect.value;
+
+      const filtered = products.filter(product => 
+      {
+        const matchesName = product.title.toLowerCase().includes(searchTerm);
+        const matchesCategory = selectedCategory === '' || product.category === selectedCategory;
+        return matchesName && matchesCategory;
+      });
+
+      displayProducts(filtered);
+    }
+  </script>
+</body>
+</html>
