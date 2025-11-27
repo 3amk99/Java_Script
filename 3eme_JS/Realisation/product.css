@@ -23,6 +23,7 @@ body
     margin-right: auto;
     margin-top: 20px ;
     border-radius: 20px ;
+    padding: 20px ;
 }
 .carte .Image
 {
@@ -90,7 +91,6 @@ body
   font-size: 17px ;
   border: none ;
   outline: none;
-  
 }
 #categoryFilter
 {
@@ -147,6 +147,7 @@ body
     margin-right: auto;
     margin-top: 10px ;
     border-radius: 10px ;
+    padding: 10px ;
 }
 .carte .Image  
 {
@@ -255,7 +256,7 @@ body
     width: 40%;
     grid-template-columns: repeat(2 , 1fr);
     gap: 10px ;
-    margin: 0 20px  ;
+    margin: 0 5px   ;
 }
 .carte
 {
@@ -267,6 +268,7 @@ body
     margin-right: auto;
     margin-top: 10px ;
     border-radius: 10px ;
+    padding: 10px ;
 }
 .carte .Image  
 {
